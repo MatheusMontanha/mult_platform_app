@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  //debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   runApp(MyApp());
 }
 
@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  Text textAppBar(String text, Color color) {
+  Text textAppBarBottom(String text, Color color) {
     return Text(
       text,
       style: TextStyle(
@@ -87,28 +87,28 @@ class _MyHomePageState extends State<MyHomePage> {
       child: ListView(
         children: <Widget>[
           ListTile(
-            title: textAppBar("Início", primaryColor),
+            title: textAppBarBottom("Início", primaryColor),
           ),
           ListTile(
-            title: textAppBar("Conta Digital", secundaryColor),
+            title: textAppBarBottom("Conta Digital", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Cartão de Crédito", secundaryColor),
+            title: textAppBarBottom("Cartão de Crédito", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Rewards", secundaryColor),
+            title: textAppBarBottom("Rewards", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Empréstimos", secundaryColor),
+            title: textAppBarBottom("Empréstimos", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Sobre Nós", secundaryColor),
+            title: textAppBarBottom("Sobre Nós", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Carreiras", secundaryColor),
+            title: textAppBarBottom("Carreiras", secundaryColor),
           ),
           ListTile(
-            title: textAppBar("Login", primaryColor),
+            title: textAppBarBottom("Login", primaryColor),
           ),
           flatButtonAppBar(),
         ],
@@ -130,14 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    textAppBar("Início", primaryColor),
-                    textAppBar("Conta Digital", secundaryColor),
-                    textAppBar("Cartão de Crédito", secundaryColor),
-                    textAppBar("Rewards", secundaryColor),
-                    textAppBar("Empréstimos", secundaryColor),
-                    textAppBar("Sobre Nós", secundaryColor),
-                    textAppBar("Carreiras", secundaryColor),
-                    textAppBar("Login", primaryColor),
+                    textAppBarBottom("Início", primaryColor),
+                    textAppBarBottom("Conta Digital", secundaryColor),
+                    textAppBarBottom("Cartão de Crédito", secundaryColor),
+                    textAppBarBottom("Rewards", secundaryColor),
+                    textAppBarBottom("Empréstimos", secundaryColor),
+                    textAppBarBottom("Sobre Nós", secundaryColor),
+                    textAppBarBottom("Carreiras", secundaryColor),
+                    textAppBarBottom("Login", primaryColor),
                     flatButtonAppBar(),
                   ],
                 ),
@@ -194,11 +194,126 @@ class _MyHomePageState extends State<MyHomePage> {
               Colors.white,
               Colors.white,
               secundaryColor),
-          Container(
-            height: 50,
-          ),
+          bottomPage(size, value),
         ],
       ),
+    );
+  }
+
+  Container bottomPage(bool size, double value) {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      color: Colors.black,
+      alignment: Alignment.topLeft,
+      child: Container(
+        width: size
+            ? MediaQuery.of(context).size.width * 0.6
+            : MediaQuery.of(context).size.width,
+        child: size ? contentBottomPageDefault() : contentBottomPageMinSize(),
+      ),
+    );
+  }
+
+  Column contentBottomPageMinSize() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        textAppBarBottom("NUBANK", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Sobre Nós", Colors.white),
+        textAppBarBottom("Carreira", Colors.white),
+        textAppBarBottom("Perguntas Frequentes", Colors.white),
+        textAppBarBottom("Contato", Colors.white),
+        textAppBarBottom("Imprensa", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Produtos", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Conta Digital", Colors.white),
+        textAppBarBottom("Cartão de Crédito", Colors.white),
+        textAppBarBottom("Rewards", Colors.white),
+        textAppBarBottom("Emprestimos", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Explore", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Comunidade", Colors.white),
+        textAppBarBottom("Newsletter", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("Pelo Mundo", Colors.white),
+        SizedBox(
+          height: 30,
+        ),
+        textAppBarBottom("México", Colors.white),
+        textAppBarBottom("Argentina", Colors.white),
+      ],
+    );
+  }
+
+  Row contentBottomPageDefault() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("NUBANK", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Sobre Nós", Colors.white),
+            textAppBarBottom("Carreira", Colors.white),
+            textAppBarBottom("Perguntas Frequentes", Colors.white),
+            textAppBarBottom("Contato", Colors.white),
+            textAppBarBottom("Imprensa", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Explore", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Comunidade", Colors.white),
+            textAppBarBottom("Newsletter", Colors.white),
+          ],
+        ),
+        Column(
+          children: <Widget>[
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Produtos", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Conta Digital", Colors.white),
+            textAppBarBottom("Cartão de Crédito", Colors.white),
+            textAppBarBottom("Rewards", Colors.white),
+            textAppBarBottom("Emprestimos", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("Pelo Mundo", Colors.white),
+            SizedBox(
+              height: 30,
+            ),
+            textAppBarBottom("México", Colors.white),
+            textAppBarBottom("Argentina", Colors.white),
+          ],
+        )
+      ],
     );
   }
 
